@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가양 클럽 룩북 — 정보</title>
+    <meta name="description" content="가양 클럽 룩북의 모든 정보를 한눈에. 위치, 운영 시간, 드레스 코드, 꿀팁까지. 클럽 가기 전에 꼭 확인하세요.">
+    <meta name="keywords" content="가양 클럽, 가양 클럽 룩북, 클럽 정보, 가양 클럽 위치, 드레스 코드, 클럽 운영시간, 가양 핫플">
+    <meta name="bpaas-design-system" content="brutalist-avantgarde">
+    <meta name="bpaas-design-theme" content="kr-acid-yellow">
+    <link rel="canonical" href="https://t3b04-gy-club-look-2.vercel.app/info">
+    <meta property="og:title" content="가양 클럽 룩북 — 정보">
+    <meta property="og:description" content="가양에서 가장 핫한 클럽 룩북의 모든 정보. 위치, 시간, 꿀팁 대방출.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://t3b04-gy-club-look-2.vercel.app/info">
+    <meta property="og:image" content="https://t3b04-gy-club-look-2.vercel.app/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="가양 클럽 룩북 — 정보">
+    <meta name="twitter:description" content="가양 클럽 룩북의 모든 정보. 클럽 가기 전에 여기서 체크하자.">
+    <style>
+        /* RESET & BASE */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', 'Noto Sans KR', system-ui, sans-serif;
+            background: #1a1a1a;
+            color: #f5f5f5;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        a {
+            color: #f5e70a;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        img, svg {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        ul {
+            list-style: none;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4 {
+            font-weight: 800;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+        }
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            color: #f5e70a;
+            text-shadow: 4px 4px 0 #000;
+        }
+        h2 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            border-left: 8px solid #f5e70a;
+            padding-left: 1rem;
+            margin: 2rem 0 1.5rem;
+        }
+        h3 {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            margin-bottom: 0.75rem;
+        }
+        p {
+            margin-bottom: 1.2rem;
+            max-width: 70ch;
+        }
+
+        /* LAYOUT */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+        section {
+            padding: 3rem 0;
+        }
+
+        /* asymmetric blocks */
+        .asymmetric-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .asymmetric-grid > *:first-child {
+            grid-column: 1 / 2;
+        }
+        .asymmetric-grid > *:last-child {
+            grid-column: 2 / 3;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 6rem 0 4rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 70%;
+            height: 200%;
+            background: rgba(245, 231, 10, 0.05);
+            transform: rotate(-15deg);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* NAV */
+        nav {
+            background: #111;
+            padding: 1rem 0;
+            border-bottom: 3px solid #f5e70a;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #f5e70a;
+            text-transform: uppercase;
+        }
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        .nav-links a {
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        .hamburger-menu {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+        .hamburger-menu span {
+            display: block;
+            width: 28px;
+            height: 3px;
+            background: #f5e70a;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* CARDS */
+        .card {
+            background: #222;
+            border: 2px solid #333;
+            padding: 2rem;
+            transition: border-color 0.3s, transform 0.2s;
+        }
+        .card:hover {
+            border-color: #f5e70a;
+            transform: translateY(-4px);
+        }
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .card-icon {
+            font-size: 1.5rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid #333;
+            padding: 1.5rem 0;
+        }
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #f5e70a;
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        .faq-item.open .faq-question::after {
+            transform: rotate(45deg);
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 300px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #111;
+            padding: 2rem 0;
+            border-top: 3px solid #f5e70a;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        .footer-links a {
+            font-size: 0.85rem;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            section {
+                padding: 2rem 0;
+            }
+            .asymmetric-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #111;
+                padding: 1rem;
+                border-bottom: 3px solid #f5e70a;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger-menu {
+                display: block;
+            }
+            .hero {
+                padding: 4rem 0 3rem;
+            }
+            h1 {
+                font-size: clamp(2rem, 6vw, 3rem);
+            }
+        }
+
+        /* UTILITY */
+        .tel-link {
+            color: #f5e70a;
+            font-weight: 700;
+        }
+        .badge {
+            display: inline-block;
+            background: #f5e70a;
+            color: #111;
+            font-weight: 800;
+            padding: 0.2rem 0.8rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+        .mt-2 { margin-top: 2rem; }
+        .mb-1 { margin-bottom: 1rem; }
+        .text-center { text-align: center; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container nav-container">
+            <a href="/" class="nav-logo">G.Y. LOOKBOOK</a>
+            <button class="hamburger-menu" aria-label="메뉴 열기">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <a href="/">홈</a>
+                <a href="/lookbook">룩북</a>
+                <a href="/info">정보</a>
+                <a href="/faq">FAQ</a>
+                <a href="tel:02-1234-5678" class="tel-link">전화 문의</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>INFO</h1>
+            <p style="font-size: 1.3rem; max-width: 600px;">가양 클럽 룩북의 모든 정보. 위치, 시간, 꿀팁까지 — 클럽 가기 전에 여기서 다 체크하고 가자.</p>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>📍 위치 & 오시는 길</h2>
+            <div class="asymmetric-grid">
+                <div>
+                    <div class="card">
+                        <div class="card-title">
+                            <span class="card-icon">📍</span> 주소
+                        </div>
+                        <p>서울특별시 강서구 가양동 123-45<br>지하철 9호선 가양역 3번 출구 도보 5분</p>
+                        <p><strong>네비게이션:</strong> '가양 클럽 거리' 검색하면 바로 나와. 주차는 근처 공영주차장 이용하고, 술 마실 거면 대중교통 강추!</p>
+                        <a href="tel:02-1234-5678" class="tel-link">📞 02-1234-5678</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="card">
+                        <div class="card-title">
+                            <span class="card-icon">🚇</span> 대중교통
+                        </div>
+                        <p>지하철 9호선 가양역 3번 출구에서 직진 → GS25 편의점에서 우회전 → 두 번째 건물 지하 1층</p>
+                        <p>버스: 100, 200, 300번 가양클럽하우스 정류장 하차</p>
+                        <p class="badge mt-2">밤 12시 이후에는 택시 추천</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2>⏰ 운영 시간</h2>
+            <div class="asymmetric-grid">
+                <div>
+                    <div class="card">
+                        <div class="card-title">
+                            <span class="card-icon">🕐</span> 평일 (월~목)
+                        </div>
+                        <p>오후 8시 ~ 오전 4시<br>※ 입장 마감: 오전 2시 30분</p>
+                        <p>평일엔 사람 적어서 조용히 즐기기 좋아. 웨이팅 거의 없음.</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="card">
+                        <div class="card-title">
+                            <span class="card-icon">🔥</span> 주말 & 공휴일
+                        </div>
+                        <p>오후 6시 ~ 오전 6시<br>※ 입장 마감: 오전 4시</p>
+                        <p>주말은 진짜 핫해. 오후 9시 전에 오는 게 꿀팁. 줄 서기 싫으면 일찍 와.</p>
+                        <p class="badge">금요일·토요일은 DJ 라이브 세트 있음</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: #1f1f1f;">
+        <div class="container">
+            <h2>👕 드레스 코드</h2>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">룩북에서 본 그 스타일이면 OK. 근데 몇 가지 룰은 있어.</p>
+            <div class="asymmetric-grid">
+                <div>
+                    <div class="card">
+                        <div class="card-title">
+                            <span class="card-icon">✅</span> OK
+                        </div>
+                        <ul style="list-style: disc; padding-left: 1.5rem;">
+                            <li>스트리트 브루탈리즘 룩 (당연)</li>
+                            <li>크롭 티셔츠 + 와이드 팬츠</li>
+                            <li>오버핏 자켓 + 슬랙스</li>
+                            <li>스니커즈 (깔끔한 거)</li>
+                            <li>시그니처 액세서리 (체인, 버킷햇)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="card">
+                        <div class="card-title">
+                            <span class="card-icon">❌</span> NO
+                        </div>
+                        <ul style="
+</body>
+</html>
